@@ -1,0 +1,35 @@
+[
+  {
+    "model": "levelupapi.games",
+    "pk": 1,
+    "fields": {
+      "title": "Welcome To",
+      "gamer": 1,
+      "gametype": 1,
+      "number_of_players": 4,
+      "description": "Benoit Turpin"
+    }
+  },
+  {
+    "model": "levelupapi.games",
+    "pk": 2,
+    "fields": {
+      "title": "Settlers of Catan",
+      "gamer": 1,
+      "gametype": 1,
+      "number_of_players": 4,
+      "description": "Klaus Teuber"
+    }
+  },
+  {
+    "model": "levelupapi.games",
+    "pk": 3,
+    "fields": {
+      "title": "Dungeons & Dragons",
+      "gamer": 1,
+      "gametype": 2,
+      "number_of_players": 5,
+      "description": "Wizards of the Coast"
+    }
+  }
+]
