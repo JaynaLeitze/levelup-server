@@ -1,5 +1,6 @@
 
 from django.core.exceptions import ValidationError
+from django.http.response import HttpResponse
 from rest_framework import status
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
@@ -33,7 +34,7 @@ class GamesView(ViewSet):
         # Use the Django ORM to get the record from the database
         # whose `id` is what the client passed as the
         # `gameTypeId` in the body of the request.
-        gametype = GameType.objects.get(pk=request.data["gametype"])
+        gametype = GameType.objects.get(pk=request.data["gameTypeId"])
         game.gametype = gametype
 
         # Try to save the new game to the database, then
@@ -42,7 +43,7 @@ class GamesView(ViewSet):
         try:
             game.save()
             serializer = GameSerializer(game, context={'request': request})
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         # If anything went wrong, catch the exception and
         # send a response with a 400 status code to tell the
