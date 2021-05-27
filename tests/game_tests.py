@@ -70,14 +70,14 @@ class GameTests(APITestCase):
         self.assertEqual(json_response["description"], "Murder Mansion")
         self.assertEqual(json_response["number_of_players"], 6)
 
-def test_change_game(self):
+    def test_change_game(self):
         """
         Ensure we can change an existing game.
         """
         game = Games()
         game.gametype_id = 1
         game.title = "Sorry"
-        game.maker = "Milton Bradley"
+        game.description = "Milton Bradley"
         game.number_of_players = 4
         game.gamer_id = 1
         game.save()
@@ -85,9 +85,8 @@ def test_change_game(self):
         # DEFINE NEW PROPERTIES FOR GAME
         data = {
             "gameTypeId": 1,
-            "skillLevel": 2,
             "title": "Sorry",
-            "maker": "Hasbro",
+            "description": "Hasbro",
             "numberOfPlayers": 4
         }
 
@@ -102,6 +101,5 @@ def test_change_game(self):
 
         # Assert that the properties are correct
         self.assertEqual(json_response["title"], "Sorry")
-        self.assertEqual(json_response["maker"], "Hasbro")
-        self.assertEqual(json_response["skill_level"], 2)
+        self.assertEqual(json_response["description"], "Hasbro")
         self.assertEqual(json_response["number_of_players"], 4)
